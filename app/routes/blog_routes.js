@@ -22,7 +22,7 @@ router.get("/blogs", (req, res) => {
 router.get("/blogs/:id", requireToken, (req, res) => {
   Blog.findById(req.params.id)
     .then(handle404)
-    .then(blog => res.status(200).send(blog))
+    .then(blog => res.status(200).json(blog))
     .catch(err => handle(err, res));
 });
 
