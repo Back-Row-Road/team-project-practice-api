@@ -43,3 +43,6 @@ Changes to blogs and pages require authentication and ownership by the user.
 The code is attentively commented out.
 
 Apart from MVP (MInimum Viable Product) requirements we
+
+Given the very tight time frame (one week!) of producing a functional web application there are some features we might have approached differently:
+Our first ERD had the logo listed under the 'Blog'. We subsequently realized it would have made more sense for it to belong to the User/Company. 
