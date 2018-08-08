@@ -3,7 +3,7 @@ const passport = require('passport')
 const Post = require('../models/post.js')
 const handle = require('../../lib/error_handler')
 
-const custormErrors = require('../../lib/custom_errors')
+const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
 const requireOwnership = customErrors.requireOwnership
 
@@ -13,9 +13,12 @@ const router = express.Router()
 router.get('/posts', requireToken, (req, res) => {
     Post.find()
     .then(posts => {
-        return posts.map(post => post.toObject())
+        res.status(200).json(posts)
     })
-    .then(posts => res.status(200).json({posts: posts}))
-    .catch(err => handle(err, res))
+    .catch(err => {
+        handle(err, res)
+        console.error(err)
+    })
 })
 
+module.exports = router;
