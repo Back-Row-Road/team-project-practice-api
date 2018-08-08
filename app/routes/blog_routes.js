@@ -11,7 +11,7 @@ const Blog = require("../models/blog");
 
 const router = express.Router();
 
-router.get("/blogs", requireToken, (req, res) => {
+router.get("/blogs", (req, res) => {
   Blog.find()
     .then(blogs => {
       res.status(200).json(blogs);
