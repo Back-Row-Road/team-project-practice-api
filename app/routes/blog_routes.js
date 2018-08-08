@@ -11,7 +11,7 @@ const Blog = require("../models/blog");
 
 const router = express.Router();
 
-router.get("/blogs", requireToken, (req, res) => {
+router.get("/blogs", (req, res) => {
   Blog.find()
     .then(blogs => {
       res.status(200).json(blogs);
@@ -22,7 +22,7 @@ router.get("/blogs", requireToken, (req, res) => {
 router.get("/blogs/:id", requireToken, (req, res) => {
   Blog.findById(req.params.id)
     .then(handle404)
-    .then(blog => res.status(200).send(blog))
+    .then(blog => res.status(200).json(blog))
     .catch(err => handle(err, res));
 });
 
