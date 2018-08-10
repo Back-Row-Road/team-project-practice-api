@@ -19,7 +19,7 @@ router.get("/blogs", (req, res) => {
     .catch(err => handle(err, res));
 });
 
-router.get("/blogs/:id", requireToken, (req, res) => {
+router.get("/blogs/:id", (req, res) => {
   Blog.findById(req.params.id)
     .then(handle404)
     .then(blog => res.status(200).json(blog))

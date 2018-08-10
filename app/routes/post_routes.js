@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+
 const handle = require("../../lib/error_handler");
 
 const customErrors = require("../../lib/custom_errors");
@@ -22,7 +23,7 @@ router.get("/posts", requireToken, (req, res) => {
     });
 });
 
-router.get("/posts/:id", requireToken, (req, res) => {
+router.get("/posts/:id", (req, res) => {
   Post.findById(req.params.id)
     .then(handle404)
     .then(post => res.status(200).json(post))

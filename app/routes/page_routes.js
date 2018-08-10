@@ -19,7 +19,7 @@ router.get("/pages", requireToken, (req, res) => {
     .catch(err => handle(err, res));
 });
 
-router.get("/pages/:id", requireToken, (req, res) => {
+router.get("/pages/:id", (req, res) => {
   Page.findById(req.params.id)
     .then(handle404)
     .then(page => res.status(200).send(page))
