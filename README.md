@@ -26,7 +26,7 @@ The server application is deployed on Heroku.
 
 ERD (Entity Relationship Diagram):
 
-USER STORIES:https://user-images.githubusercontent.com/39502188/43967750-2345c260-9c93-11e8-8dee-66db35a847a7.png
+USER STORIES: https://user-images.githubusercontent.com/39502188/43967750-2345c260-9c93-11e8-8dee-66db35a847a7.png
 
 WIREFRAMES:
 
