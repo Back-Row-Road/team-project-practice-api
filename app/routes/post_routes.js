@@ -37,19 +37,20 @@ router.post("/posts", requireToken, (req, res) => {
     image: req.body.post.image,
     blogID: req.body.post.blogID
   };
-  fileUpload(postPost.image)
-    .then(data => {
-      postPost.image = data.Location;
+  Post.create(postPost)
+    .then(post => {
+      res.status(201).json(post);
     })
-    .then(data => {
-      Post.create(postPost)
-        .then(post => {
-          res.status(201).json(post);
-        })
-        .catch(err => handle(err, res));
-      console.log(data);
-    })
-    .catch(console.error);
+    .catch(err => handle(err, res));
+  // fileUpload(postPost.image)
+  //   .then(data => {
+  //     postPost.image = data.Location;
+  //   })
+  //   .then(data => {
+
+  // console.log(data);
+  // })
+  // .catch(console.error);
 });
 
 router.patch("/posts/:id", requireToken, (req, res) => {
@@ -59,23 +60,24 @@ router.patch("/posts/:id", requireToken, (req, res) => {
     image: req.body.post.image,
     blogID: req.body.post.blogID
   };
-  fileUpload(postUpdate.image)
-    .then(data => {
-      postUpdate.image = data.Location;
-      console.log(postUpdate.image);
-    })
-    .then(() => {
-      Post.findByIdAndUpdate(
-        req.params.id,
-        postUpdate,
-        { new: true },
-        (err, todo) => {
-          if (err) return res.status(500).send(err);
-          return res.json(todo);
-        }
-      );
-    })
-    .catch(err => handle(err, res));
+  Post.findByIdAndUpdate(
+    req.params.id,
+    postUpdate,
+    { new: true },
+    (err, todo) => {
+      if (err) return res.status(500).send(err);
+      return res.json(todo);
+    }
+  );
+  // fileUpload(postUpdate.image)
+  //   .then(data => {
+  //     postUpdate.image = data.Location;
+  //     console.log(postUpdate.image);
+  //   })
+  //   .then(() => {
+
+  // })
+  // .catch(err => handle(err, res));
 });
 
 router.delete("/posts/:id", requireToken, (req, res) => {
