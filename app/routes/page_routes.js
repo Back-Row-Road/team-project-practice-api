@@ -33,35 +33,36 @@ router.patch("/pages/:id", requireToken, (req, res) => {
     title: req.body.page.title,
     blogID: req.body.page.blogID
   };
-  if (updatePage.photo != "") {
-    fileUpload(updatePage.photo)
-      .then(data => {
-        updatePage.photo = data.Location;
-        console.log(updatePage.photo);
-      })
-      .then(() => {
-        Page.findByIdAndUpdate(
-          req.params.id,
-          updatePage,
-          { new: true },
-          (err, todo) => {
-            if (err) return res.status(500).send(err);
-            return res.json(todo);
-          }
-        );
-      })
-      .catch(err => handle(err, res));
-  } else {
-    Page.findByIdAndUpdate(
-      req.params.id,
-      updatePage,
-      { new: true },
-      (err, todo) => {
-        if (err) return res.status(500).send(err);
-        return res.json(todo);
-      }
-    );
-  }
+  Page.findByIdAndUpdate(
+    req.params.id,
+    updatePage,
+    { new: true },
+    (err, todo) => {
+      if (err) return res.status(500).send(err);
+      return res.json(todo);
+    }
+  );
+  // if (updatePage.photo != "") {
+  //   fileUpload(updatePage.photo)
+  //     .then(data => {
+  //       updatePage.photo = data.Location;
+  //       console.log(updatePage.photo);
+  //     })
+  //     .then(() => {
+  //       Page.findByIdAndUpdate(
+  //         req.params.id,
+  //         updatePage,
+  //         { new: true },
+  //         (err, todo) => {
+  //           if (err) return res.status(500).send(err);
+  //           return res.json(todo);
+  //         }
+  //       );
+  //     })
+  //     .catch(err => handle(err, res));
+  // } else {
+
+  // }
 });
 
 router.post("/pages", requireToken, (req, res) => {
@@ -71,28 +72,28 @@ router.post("/pages", requireToken, (req, res) => {
     title: req.body.page.title,
     blogID: req.body.page.blogID
   };
+  Page.create(createPage)
+    .then(page => {
+      console.log(data);
+      res.status(201).json(page);
+    })
+    .catch(err => handle(err, res));
+  // if (createPage.photo != "") {
+  //   fileUpload(createPage.photo)
+  //     .then(data => {
+  //       createPage.photo = data.Location;
+  //     })
+  //     .then(data => {
+  //       Page.create(createPage)
+  //         .then(page => {
+  //           res.status(201).json(page);
+  //         })
+  //         .catch(err => handle(err, res));
+  //     })
+  //     .catch(console.error);
+  // } else {
 
-  if (createPage.photo != "") {
-    fileUpload(createPage.photo)
-      .then(data => {
-        createPage.photo = data.Location;
-      })
-      .then(data => {
-        Page.create(createPage)
-          .then(page => {
-            res.status(201).json(page);
-          })
-          .catch(err => handle(err, res));
-      })
-      .catch(console.error);
-  } else {
-    Page.create(createPage)
-      .then(page => {
-        console.log(data);
-        res.status(201).json(page);
-      })
-      .catch(err => handle(err, res));
-  }
+  // }
 });
 
 router.delete("/pages/:id", requireToken, (req, res) => {
