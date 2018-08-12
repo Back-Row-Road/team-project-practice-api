@@ -4,15 +4,15 @@ const blogSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true
+      required: false
     },
     logo: {
       type: String,
-      required: true
+      required: false
     },
     headerImage: {
       type: String,
-      required: true
+      required: false
     },
     userID: {
       type: mongoose.Schema.Types.ObjectId,
