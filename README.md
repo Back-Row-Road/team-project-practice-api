@@ -24,11 +24,13 @@ The server application is deployed on Heroku.
 
 ---
 
-ERD (Entity Relationship Diagram):
+ERD (Entity Relationship Diagram): https://user-images.githubusercontent.com/39502188/44027595-0d90cc10-9ec5-11e8-97c1-9bdfbacfe619.jpg
 
 USER STORIES: https://user-images.githubusercontent.com/39502188/43967750-2345c260-9c93-11e8-8dee-66db35a847a7.png
 
-WIREFRAMES:
+WIREFRAMES: 
+https://user-images.githubusercontent.com/39502188/44028040-94ed9c00-9ec6-11e8-8bf3-9c3d684001c0.jpg
+https://user-images.githubusercontent.com/39502188/44028041-95029a10-9ec6-11e8-9eb8-303d7ef7ecb0.jpg
 
 'PRESTO!' FEATURES:
 
